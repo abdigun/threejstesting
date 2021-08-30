@@ -39,6 +39,22 @@ function createCamera() {
 	return camera;
 }
 
+function getRandomColor() {
+	let colors = [
+		"dodgerblue",
+		"tomato",
+		"limegreen",
+		"rebeccapurple",
+		"gold",
+		"lavender",
+		"lightcoral",
+		"papayawhip",
+	];
+
+	let random = Math.floor(Math.random() * colors.length);
+	return colors[random];
+}
+
 function createCube() {
 	// geometry - the actual shape/skeleton of the object
 	let geometry = new THREE.BoxGeometry(4, 4, 4);
@@ -50,7 +66,7 @@ function createCube() {
 
 	let material = new THREE.MeshLambertMaterial({
 		// this reponds to light
-		color: "tomato",
+		color: getRandomColor(),
 	});
 
 	// create a mesh by combining the geometry and the material
@@ -79,7 +95,7 @@ function createSphere() {
 	);
 	// material
 	let mat = new THREE.MeshLambertMaterial({
-		color: "dodgerblue",
+		color: getRandomColor(),
 	});
 	// mesh
 	let mesh = new THREE.Mesh(geo, mat);
@@ -90,7 +106,7 @@ function createSphere() {
 function createLight() {
 	let light = new THREE.PointLight(
 		"white",
-		1 // intensity
+		1.5 // intensity
 	);
 	return light;
 }
