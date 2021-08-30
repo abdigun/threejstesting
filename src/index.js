@@ -11,9 +11,12 @@
 const THREE = require("three");
 //console.log(THREE);
 function createRenderer() {
-	let renderer = new THREE.WebGLRenderer();
+	let renderer = new THREE.WebGLRenderer({
+		antialias: true,
+	});
 	renderer.setSize(window.innerWidth, window.innerHeight); // getting the window size
 	renderer.setClearColor("#16161d"); // background
+	renderer.setPixelRatio(window.devicePixelRatio);
 	let output = document.querySelector("#output");
 	output.appendChild(renderer.domElement);
 	return renderer; // we will be calling this a lot
