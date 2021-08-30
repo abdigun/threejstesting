@@ -8,6 +8,8 @@
 // Aframe - vr/ar for three.js
 // babylon.js games for three.js
 
+console.log(process.env.API_KEY);
+
 const THREE = require("three");
 //console.log(THREE);
 function createRenderer() {
