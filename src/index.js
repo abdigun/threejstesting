@@ -131,8 +131,26 @@ light.position.z = 20;
 
 sphere.position.x = 20;
 
+// creating a random cube to be put in the page
+let cubes = [];
+let cubeCount = 500;
+
+for (let i = 0; i <= cubeCount; i += 1) {
+	// create a cube
+	let c = createCube();
+	// random position for the array
+	c.position.x = Math.random() * 400 - 200;
+	c.position.y = Math.random() * 400 - 200;
+	c.position.z = Math.random() * 400 - 200;
+	// push in empty array
+	cubes.push(c);
+}
+
+console.log(cubes.length);
+
 scene.add(axeshelper, lightHelper);
-scene.add(cube, sphere, light);
+// use spread operator  to push
+scene.add(cube, sphere, light, ...cubes);
 // create cube we can pass it as many as we want
 
 renderer.render(scene, camera); // render a scene with camera
@@ -144,6 +162,16 @@ function animate() {
 	//cube.rotation.x -= 0.2;
 	//cube.rotation.y += 0.2;
 	//cube.rotation.z -= 0.2;
+	cube.rotation.x += 0.01;
+	cube.rotation.z += 0.01;
+	cube.rotation.y += 0.01;
+
+	// create an animation for array c
+	cubes.forEach(function (c) {
+		c.rotation.x -= 0.01;
+		c.rotation.z -= 0.01;
+		c.rotation.y -= 0.01;
+	});
 	renderer.render(scene, camera); // rerender it everytime u need to change
 	requestAnimationFrame(animate);
 }
